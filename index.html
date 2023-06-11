@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <title>Budgetting App</title>
+  </head>
+  <body>
+    <div class="maincontainer">
+
+     <img src="budget.jpg" alt="">
+      
+      <div>
+        <h2 class="OPEXheading">OPEX (Operational Expense) Calculation</h2>
+        <br />
+        <input
+          type="number"
+          name="OPEX_value"
+          placeholder="Enter the Budget/OPEX"
+          id="OPEXamt"
+        />
+        <button class="btn" onclick="bugetdistirbution()">Confirmed</button>
+      </div>
+    </div>
+
+    <div class="distribution">
+      <h3 class="Dist_heading">OPEX Distribution - Categories</h3>
+      <form class="Categories" name="">
+        <div class="inputcategories">
+          <p class="paras">Salaries & Wages (20% of Budget)</p>
+          <p class="paras">Transportation (25% of Budget)</p>
+          <p class="paras">Utilities (10% of Budget)</p>
+          <p class="paras">Rent (10% of Budget)</p>
+          <p class="paras">Materials & Supplies (15% of Budget)</p>
+          <p class="paras">Maintenance & Repairs (20% of Budget)</p>
+        </div>
+        <div class="inputnumbers">
+          <input class="paras" type="number" name="SalariesnWages" id="snw" />
+          <input class="paras" type="number" name="Transportation" id="trans" />
+          <input class="paras" type="number" name="Utilities" id="uti" />
+          <input class="paras" type="number" name="Rent" id="ren" />
+          <input class="paras" type="number" name="MaterialnSupplies" id="mns"/>
+          <input class="paras" type="number" name="MaintenancenRepairs" id="mnr"/>
+        </div>
+      </form>
+    </div>
+
+
+    <!--input of expenses with respect to categories  -->
+
+    <div class="inputexpenses">
+      <div id="expinput">
+        
+        <form id="formForInput">
+           <input class="dateinput" type="date" id="idate" />
+
+          <select class="selection" name="" id="categorytype">
+            <option disabled selected value=" ">Please enter expense in any category</option>
+            <option id="salaries" value="salariesnWages">Salaries & Wages</option>
+            <option id="transportation" value="transportation">Transportation</option>
+            <option id="utilities" value="uti">Utilities</option>
+            <option id="rent" value="ren">Rent</option>
+            <option id="material" value="mns">Materials & Supplies</option>
+            <option id="maintenance" value="mnr">Maintenance & Repairs</option>
+          </select>
+          <input class="inputvalue" type="number" placeholder="Expense Occured" id="amountinput" />
+          <input class="inputbillnum" type="text" placeholder="Bill number" id="billnuminput">
+          <button class="btn" id="expbtn" onclick="addExpenses('occured')">Add Expenses</button>
+        </form>
+        
+      </div>
+    </div>
+
+     <!-- all expenses will add under these table heads -->
+    
+      <div id="tablehead">
+        <table id="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Bill Number</th>
+                <!-- <th>&nbsp;</th> -->
+              </tr>
+          </thead>
+            
+            <!-- <tr>
+              <td><p name="Date" id="oDate"></td>
+              <td><p name="Select Type" id="oSelectType"></p></td>
+              <td><p name="Amount" id="oAmount"></p></td>
+              <td><p name="BillNum" id="oBillNum"></p></td> -->
+              <!-- <td><p name="Del1" id="Del1"><a href=""> Delete</a></p></td> -->
+            <!-- </tr> -->
+           <tbody id="expensesInTable"></tbody>
+        </table>
+      </div>
+    
+  
+
+     <!-- summary shows total expenses in each category and balance -->
+    
+
+      <div class="summary">
+        <p class="summaryline">Summary</p>
+        <div class="summaryBlocks">
+          <div class="summaryCategories">
+            <p class="summaryitems">Salaries & Wages</p>
+            <p class="summaryitems">Transportation</p>
+            <p class="summaryitems">Utilities</p>
+            <p class="summaryitems">Rent</p>
+            <p class="summaryitems">Materials & Supplies</p>
+            <p class="summaryitems">Maintenance & Repairs</p>
+          </div>
+      
+          <div class="summaryTotal">
+            <input class="summaryitems" type="number" name="SalariesnWages" id="snwTotal" />
+            <input class="summaryitems" type="number" name="Transportation" id="transTotal" />
+            <input class="summaryitems" type="number" name="Utilities" id="utiTotal" />
+            <input class="summaryitems" type="number" name="Rent" id="renTotal" />
+            <input class="summaryitems" type="number" name="MaterialnSupplies" id="mnsTotal"/>
+            <input class="summaryitems" type="number" name="MaintenancenRepairs" id="mnrTotal"/>
+          </div>
+    
+          <div class="summaryBalance">
+            <input class="summaryitems" type="number" name="SalariesnWages" id="snwBalance" />
+            <input class="summaryitems" type="number" name="Transportation" id="transBalance" />
+            <input class="summaryitems" type="number" name="Utilities" id="utiBalance" />
+            <input class="summaryitems" type="number" name="Rent" id="renBalance" />
+            <input class="summaryitems" type="number" name="MaterialnSupplies" id="mnsBalance"/>
+            <input class="summaryitems" type="number" name="MaintenancenRepairs" id="mnrBalance"/>
+          </div>
+    
+      </div>
+      
+
+    
+    
+
+  
+
+
+
+    
+    
+   
+
+    
+    <script src="JS.js"></script>
+  </body>
+</html>
